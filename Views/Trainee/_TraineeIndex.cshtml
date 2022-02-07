@@ -1,0 +1,137 @@
+﻿@model PagedList.IPagedList<OctoberProjectCodeFirst.Models.Trainee>
+@using PagedList.Mvc
+
+
+<h2>Trainee {CRUD}-(PartialView + Ajax with Modal Window)</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Search by Name :
+        @Html.TextBox("searchString")
+        <input type="submit" value="Search" placeholder="Type Name Here" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TraineeName)*@
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSort })
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Gender)*@
+            Gender
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.DOB)*@
+            Date of Birth
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.TraineeEmail)*@
+            Email Address
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TraineeContact)*@
+            Phone Number
+        </th>
+        <th>
+            @* @Html.DisplayNameFor(model => model.CourseID)*@
+            CourseID
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TraineeImage)*@
+            Trainee Image
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraineeContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.TraineeImage)*@
+                <img src="@Url.Content(item.TraineeImage)" width="80" height="80" />
+            </td>
+
+            <td>
+                <a href="@Url.Action("Edit","Trainee",new {id=item.TraineeID })" class="editDialog"><i class="fa fa-pencil-square-o"></i>Edit</a>|
+                <a href="@Url.Action("Details","Trainee",new {id=item.TraineeID })" class="detialsDialog"><i class="fa fa-pencil-square-o"></i>Details</a>| |
+            </td>
+            <td>
+                @Ajax.ActionLink("Delete", "Delete", "Trainee", new { @id = item.TraineeID }, new AjaxOptions
+                {
+                    HttpMethod = "Get",
+               UpdateTargetId = "div-record"
+                }, new { @class = "fa fa-trash-o" })
+
+            </td>
+
+        </tr>
+
+
+    }
+</table>
+
+<br />
+Page @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Add").click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $(".divForAdd").html(response);
+
+            });
+            $("#Add-Modal").modal({
+                backdrop: "static",
+            }, 'show');
+        });
+
+        $(".editDialog").click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $(".divForUpdate").html(response);
+
+            });
+            $("#Edit-Modal").modal({
+                backdrop: "static",
+            }, 'show');
+        });
+
+        $(".detialsDialog").click(function (event) {
+            event.preventDefault();
+            $.get(this.href, function (response) {
+                $(".details").html(response);
+
+            });
+            $("#Edit-Modal").modal({
+                backdrop: "static",
+            }, 'show');
+        });
+    })
+</script>
+
+

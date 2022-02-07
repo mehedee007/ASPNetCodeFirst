@@ -1,0 +1,13 @@
+***
+The method that takes the HttpPostedFilebase and the view for uploading the image must have the same name as the paramter name in the Action Method
+
+##
+Example: 
+public ActionResult Create (T t, HttpPostedFilebase imagefile)
+{
+	//TODO
+}
+
+View::
+
+@Html.TextBox("imageFile","",new {type="file"})

@@ -1,0 +1,66 @@
+﻿@model OctoberProjectCodeFirst.Models.TSP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TSP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trainer.TrainerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trainer.TrainerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TspName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TspName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TspAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TspAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TspContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TspContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TspEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TspEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TspID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

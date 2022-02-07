@@ -1,0 +1,63 @@
+﻿@model IEnumerable<OctoberProjectCodeFirst.Models.TSP>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trainer.TrainerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TspName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TspAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TspContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TspEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TspName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TspAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TspContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TspEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TspID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TspID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TspID })
+        </td>
+    </tr>
+}
+
+</table>

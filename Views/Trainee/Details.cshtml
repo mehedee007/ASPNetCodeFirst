@@ -1,0 +1,75 @@
+﻿@model OctoberProjectCodeFirst.Models.Trainee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Course.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraineeContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraineeImage)
+        </dt>
+
+
+        <dd>
+            <img src="@Url.Content(Session["TraineeImage"].ToString())" width="80" height="80" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TraineeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
